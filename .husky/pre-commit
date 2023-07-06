@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# First check the branch name is correct
+# Run as separate script so we can use bash
+$(dirname "$0")/check_jira_number.sh
+
+
+# ensure the docker container is running
+./docker/sdk start
+# run lint-staged to run any checks on staged files only
+./docker/sdk exec 'pnpm exec lint-staged'
+
+pnpm exec lint-staged
+
+exit 0

@@ -1,0 +1,81 @@
+# NOTE: To Atomizer devs - this file is renamed to .gitignore as NPM always excludes it
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# macOS
+._*
+.DS_Store
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.rej
+*.swo
+*.swp
+*.zip
+*.tgz
+*.gz
+*.vi
+*~
+
+# Logs
+logs
+*.log
+log/*.log
+log/*.log.[0-9]
+*-debug.log*
+
+# cache
+.cache
+.eslintcache
+
+# editors
+Thumbs.db
+.project
+.settings
+*.tmproj
+*.tmproject
+*.sublime-project
+*.sublime-workspace
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# User-specific stuff
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/**/usage.statistics.xml
+**/.idea/**/dictionaries
+**/.idea/**/shelf
+
+# Node
+pids
+*.pid
+*.seed
+*.pid.lock
+*.pnp*
+npm-debug.log*
+.npm
+.node_repl_history
+node_modules
+jspm_packages
+.npmrc
+.pnpm-store
+
+# dotenv environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# custom atomizer ignores
+.gradle
+electron-build
+electron-dist
+electron-tmp
+
+# build artefacts
+junit.xml
+dist
+build
+deploy
+coverage

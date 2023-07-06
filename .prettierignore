@@ -1,0 +1,16 @@
+# platofrm specific
+android
+
+# configuration files
+package.json
+*-lock.json
+*-lock.yaml
+tsconfig.json
+
+# build output
+build
+dist
+coverage
+
+# pnpm
+.pnpm-store

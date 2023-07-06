@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Insert the jira number into the commit message
+# Run as separate script so we can use bash
+$(dirname "$0")/insert_jira_number.sh $1

@@ -1,0 +1,52 @@
+{
+	"name": "tempate-root",
+	"description": "Monorepo for the project",
+	"version": "0.1.0",
+	"private": true,
+	"license": "UNLICENSED",
+	"scripts": {
+		"preinstall": "pnpm dlx only-allow pnpm",
+		"postinstall": "husky install",
+		"start": "pnpm --stream --parallel --filter @hxgn/mock-api --filter @hxgn/atomizer-template start",
+		"start:all": "pnpm -r start",
+		"build": "pnpm -r build",
+		"test": "TZ=UTC pnpm -r test -- --watchAll=false",
+		"format": "prettier --write .",
+		"lint": "eslint --fix --ext .js,.jsx,.ts,.tsx . && tsc",
+		"storybook": "pnpm storybook -r",
+		"clean": "rimraf build ./**/coverage electron-build electron-dist ./**/node_modules"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=7",
+		"pnpm": ">=6"
+	},
+	"pnpm":{
+		"overrides": {
+			"react-error-overlay": "6.0.9"
+		}
+	},
+	"devDependencies": {
+		"@types/jest": "^27.5.2",
+		"@types/node": "^16.18.18",
+		"@typescript-eslint/eslint-plugin": "^5.56.0",
+		"@typescript-eslint/parser": "^5.56.0",
+		"cross-env": "^7.0.3",
+		"eslint": "^8.36.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-jsdoc": "^38.1.6",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-promise": "^6.1.1",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-simple-import-sort": "^7.0.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^13.2.0",
+		"prettier": "^2.8.6",
+		"prettier-plugin-sort-json": "^0.0.3",
+		"react-error-overlay": "6.0.9",
+		"rimraf": "^3.0.2",
+		"typescript": "^5.0.2"
+	}
+}

@@ -1,0 +1,135 @@
+{
+	"root": true,
+	"parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+	"parserOptions": {
+		"ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
+		"sourceType": "module", // Allows for the use of imports
+		"ecmaFeatures": {
+			"jsx": true // Allows for the parsing of JSX
+		}
+	},
+	"env": {
+		"jest": true,
+		"browser": true,
+		"es2020": true
+	},
+	"settings": {
+		"react": {
+			"version": "detect" // update this when the react version in packages is updated
+		},
+		"jsdoc": {
+			"tagNamePreference": {
+				"tag constructor": "constructor"
+			}
+		}
+	},
+	"plugins": ["react", "react-hooks", "simple-import-sort", "@typescript-eslint"],
+	"extends": [
+		"plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+		"plugin:jsdoc/recommended", // add recommended rules for jsdoc
+		"plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
+		"plugin:react-hooks/recommended", // Adds recommended rules for react hooks
+		"plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier.
+	],
+	"rules": {
+		// Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+		// e.g. "@typescript-eslint/explicit-function-return-type": "off",
+		// note you must disable the base rule as it can report incorrect errors
+
+		// COMMON CODE QUALITY
+		"comma-dangle": ["error", "always-multiline"],
+		"no-alert": "error",
+		"no-debugger": "error",
+		"simple-import-sort/imports": "error",
+		"simple-import-sort/exports": "error",
+		"no-unused-vars": "off",
+		"no-use-before-define": "off",
+		"flowtype/no-types-missing-file-annotation": "off",
+		"max-len": "off",
+
+		// JS-DOC
+		// Ensure that public Arrow Functions are also included in JSDoc requirements
+		"jsdoc/require-jsdoc": [
+			"warn",
+			{
+				"require": {
+					"ArrowFunctionExpression": true,
+					"ClassDeclaration": true,
+					"ClassExpression": true,
+					"FunctionDeclaration": true,
+					"FunctionExpression": true,
+					"MethodDefinition": true
+				},
+				"publicOnly": true,
+				"contexts": [
+					"TSInterfaceBody",
+					"TSPropertySignature",
+					"TSMethodSignature",
+					"TSTypeAliasDeclaration"
+				]
+			}
+		],
+		"jsdoc/no-undefined-types": "off",
+		// warn if jsdoc missing throw definition
+		"jsdoc/require-throws": "warn",
+		"jsdoc/newline-after-description": "off",
+
+		// TYPESCRIPT
+		"@typescript-eslint/no-use-before-define": ["error"],
+		"@typescript-eslint/ban-ts-comment": [
+			"error",
+			{
+				"ts-expect-error": "allow-with-description",
+				"ts-ignore": "allow-with-description",
+				"ts-nocheck": "allow-with-description",
+				"minimumDescriptionLength": 3
+			}
+		],
+		"@typescript-eslint/no-unused-vars": ["error"],
+		"@typescript-eslint/explicit-module-boundary-types": "error",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/array-type": [
+			"error",
+			{
+				"default": "generic"
+			}
+		],
+		"@typescript-eslint/naming-convention": [
+			"error",
+			{
+				"selector": ["typeLike", "interface"],
+				"format": ["PascalCase"]
+			},
+			{
+				"selector": ["enum"],
+				"format": ["UPPER_CASE"]
+			}
+		]
+	},
+	"overrides": [
+		{
+			"files": ["*.js", "*.jsx"],
+			"rules": {
+				"@typescript-eslint/no-var-requires": "off",
+				"@typescript-eslint/explicit-function-return-type": "off",
+				"@typescript-eslint/explicit-module-boundary-types": "off"
+			}
+		},
+		{
+			"files": ["*.ts", "*.tsx"],
+			"rules": {
+				"jsdoc/require-param-type": ["off", { "checkDestructured": false }],
+				"jsdoc/require-property-type": "off",
+				"jsdoc/require-returns-type": "off",
+				"jsdoc/no-types": "warn"
+			}
+		},
+		{
+			"files": ["*.mock.ts", "*.test.ts", "*.test.tsx"],
+			"rules": {
+				"jsdoc/require-jsdoc": "off"
+			}
+		}
+	],
+	"ignorePatterns": ["node_modules", "build", "dist", "android", "lib", "electron-build"]
+}

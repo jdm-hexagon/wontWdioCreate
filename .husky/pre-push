@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# ensure the docker container is running
+./docker/sdk start
+# ensure the files are linted before pushing
+./docker/sdk exec 'pnpm lint'
+
+pnpm lint;
+
+exit 0
